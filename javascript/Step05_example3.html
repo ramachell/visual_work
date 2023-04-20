@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step05_example3.html</title>
+</head>
+
+<body>
+    <h1>다중 if 문 테스트</h1>
+    <input type="text" id="jumsu" placeholder="점수 입력...">
+    <button onclick="check()">확인하기</button>
+    <p>
+        <strong id="result"></strong><span id="result2"> 학점 입니다. </span>
+    </p>
+    <script>
+        /*  
+        input 요소에 점수를 입력후 확인 눌렀을때 점수가 
+        90이상 "A"
+        80이상 "B"
+        70이상 "C"
+        60이상 "D"
+        그 이외 "F"
+        */
+        check = () => {
+            let score = document.querySelector("#jumsu").value;
+            
+            if (score >= 0 && score <= 100) {
+                if (score <= 100 && score >= 90) {
+                    grade = '"A"';
+                } else if (score < 90 && score >= 80) {
+                    grade = '"B"';
+                } else if (score <= 80 && score >= 70) {
+                    grade = '"C"';
+                } else if (score < 70 && score >= 60) {
+                    grade = '"D"';
+                } else if (score < 60 && score >= 0) {
+                    grade = '"F"';
+                }
+               document.querySelector("#result").innerText = grade;
+               document.querySelector("#result2").innerText = "학점 입니다."
+                }else{
+                   alert("잘못 입력 하였습니다.")
+                    //document.querySelector("#result").innerText = "";
+                    //ㄴdocument.querySelector("#result2").innerText ="잘못 입력 하였습니다.";
+                }
+        }
+    </script>
+</body>
+
+</html>

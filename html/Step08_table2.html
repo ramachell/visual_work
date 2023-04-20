@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step08_table2.html</title>
+    <style>
+        .my-table{
+            border-collapse: collapse;
+        }
+        thead {
+            font-size: 20px;
+            background-color: aquamarine;
+        }
+        tfoot > tr > th{
+            font-size: 25px;
+            background-color: aquamarine;
+        }
+        .product{
+            font-weight: bold;
+            text-align: center;
+        }
+        caption{
+            font-weight: bold;
+            font-size: 30px;
+            background-color: yellow;
+            border: 4px solid;
+        }
+        .sum{
+            font-weight: bold;
+            background-color: skyblue;
+            font-size: 40px;
+        }
+        table{
+            border: 4px solid;
+            border-top: none;
+            min-width: 570px;
+        }
+        tr{
+            border: 1px solid;
+        }
+        h1{
+            min-width: 570px;
+        }
+    </style>
+</head>
+<body>
+    <h1>tfoot 이 있는 table</h1>
+    <table border="1" class="my-table">
+        <caption>GS25 현금, 카드 매출 내역</caption>
+        <colgroup>
+            <col width="200">
+            <col width="100">
+            <col width="100">
+            <col width="150">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>상품명</th>
+                <th>현금</th>
+                <th>카드</th>
+                <th>현금+카드</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>합계</th>
+                <td>4,300원</td>
+                <td>800원</td>
+                <td class="sum">5,100원</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td class="product">삼각김밥</td>
+                <td>800</td>
+                <td>0</td>
+                <td>800</td>
+            </tr>
+            <tr>
+                <td class="product">도시락</td>
+                <td>3,500</td>
+                <td>0</td>
+                <td>3,500</td>
+            </tr>
+            <tr>
+                <td class="product">박카스</td>
+                <td>0</td>
+                <td>800</td>
+                <td>800</td>
+            </tr>
+        </tbody>
+    </table>   
+</body>
+</html>

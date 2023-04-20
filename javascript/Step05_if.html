@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step05_if.html</title>
+</head>
+<body>
+    <h1>조건부로 실행되는 code 블럭 구성하기</h1>
+    <p id="one">누구세요?</p>
+    <script>
+        let name = prompt("이름을 입력하세요");
+        
+        // 입력한 이름이 "김1번" 이면 위의 p요소에 "주인님 반갑습니다." 라고 출력되도록하기
+
+        if(name == "김1번"){
+            document.querySelector("p").innerText="주인님 반갑습니다.";
+        }
+        else{
+            document.querySelector("p").innerText="누구세요?";
+        }
+    </script>
+</body>
+</html>

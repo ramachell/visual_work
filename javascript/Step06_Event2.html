@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_Event2.html</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            background-color: yellow;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <h1>마우스 이벤트 처리 하기</h1>
+    <div class="box"></div>
+    <script>
+        document.querySelector(".box").addEventListener("mousemove" ,(eee)=>{
+            // console.log("mousemove!");
+            // console.log(event); 
+            // mousemove 동작에 대한 정보를 eee에 오브젝트로 받아옴
+            // => 정한 eee로 안쓰고 event로 해도됨
+            let x = eee.offsetX; 
+            let y = event.offsetY;
+            event.target.innerText="x: " + x + " y: " + y;
+        })
+    </script>
+</body>
+</html>

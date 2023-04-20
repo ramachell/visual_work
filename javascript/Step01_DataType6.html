@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step01_DataType6.html</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        section{
+            background-color: aqua;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            background: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <h1>javascript 데이터 type</h1>
+    <script>
+        let pushRabbit = function(){
+            console.log("냉장고 문을 연다"),
+            console.log("토끼를 집어 넣는다"),
+            console.log("냉장고 문을 닫는다");
+        };
+    
+        
+        let pushRabbit2 = function(){
+            alert("냉장고 문을 연다") 
+            alert("토끼를 집어 넣는다")
+            alert("냉장고 문을 닫는다")
+        };
+    </script>
+    <button onclick="pushRabbit()">넣기</button>
+    <div class="box" onmouseleave="pushRabbit()"></div>
+    <div class="box2"></div>
+</section>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step04_Loop3.html</title>
+    <style>
+        li{
+            font-size : 60px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <li>li5</li>
+    </ul>
+    <button onclick="print()">출력하기</button>
+    <button onclick="fontbigger()">크기 키우기</button>
+    <script>
+        // li의 innerText로 출력할 문자열이 배열에 준비되어 있다고 생각하자
+        let names=["김1번", "김2번", "김3번", "김4번", "김5번"]
+
+        // 출력하기 버튼을 누르면 names 배열에 저장된 문자열이 li 요소의 innerText 로 출력되도록 해보세요.
+
+        print=()=>{
+            for (let i = 0 ; i < 5 ; i++){
+               document.querySelectorAll("li")[i].innerText=names[i]
+            }
+        }
+        fontbigger=()=>{
+            for (let i = 0 ; i < 5 ; i++){
+                size[i]=document.querySelectorAll("li")[i].style.fontSize
+                document.querySelectorAll("li")[i].style.fontSize="15px"
+                document.querySelectorAll("li")[i].style.fontSize+1+"px";
+                // 폰트사이즈 어케 얻어옴 ????
+            }
+        }
+    </script>
+</body>
+</html>

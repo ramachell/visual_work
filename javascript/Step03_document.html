@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_document.html</title>
+    <style>
+        span{
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            color : black;
+            display:contents
+        }
+        div#d1{
+            background-color: aqua;
+        }
+        div{
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            font-size: 30px;
+            color : white;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="d1" onmouseover="changediv()"></div>
+    <div id="d2" onmouseover="changediv2()"></div>
+    <div id="d3" onmouseover="changediv3()"></div>
+    <div id="d4" onmouseover="changediv4()"></div>
+    <div id="d5" onmouseover="changediv5()"></div>
+    <div id="d6" onmouseover="changediv6()"></div>
+    <div id="d7" onmouseover="changediv7()"></div>
+    <div id="d8" onmouseover="changediv8()"></div>
+    <div id="d9" onmouseover="changediv9()"></div>
+    <div id="d0" onmouseover="changediv0()"></div>
+<br>
+    <span></span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span><br>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+    <span>10</span>
+    <span>11</span>
+
+
+
+
+    <h1>document object 사용해 보기</h1>
+    <p onmouseover="mouseover()"></p>=</p>
+    <p id="one" onmouseover="mouseover()">p1</p>
+    <p class="my-class" onmouseover="mouseover2()">p2</p>
+    <p class="my-class">p3</p>
+    <input type="text" id="two">
+    <button onclick="senddata()">전송 &rarr;</button>
+    <input type="text" id="three">
+    <br><br>
+    <button onclick="change_h1()">바꾸기</button><div></div>
+    <br>
+    <button onclick="re_change()">되돌리기</button>
+    <script>
+
+        let senddata = function(){
+            //let value_two = document.querySelector("#two").value;
+            // document.querySelector("#two").value = "";
+            //document.querySelector("#three").value = value_two;
+
+            document.querySelector("#three").value = document.querySelector("#two").value;
+            // document.querySelector("#two").value = "";
+            
+        
+        }
+        // 특정 버튼을 눌렀을때 h1 요소 innertext를 바꾸고싶다.
+        let change_h1 = function(){
+        document.querySelector("h1").innerText="document object changed!!!!!";
+        // document.querySelector("body").bgColor="aqua"; 
+        // 랜덤으로 바꿔보기
+        let random_0_3 = Math.ceil(Math.random()*4)-1;
+        let color_list = ["aqua", "red", "sky", "white"];
+        document.querySelector("body").bgColor=color_list[random_0_3];
+        
+    }
+    
+        let re_change = function(){
+            document.querySelector("h1").innerText="document object 사용해 보기"
+            document.querySelector("body").bgColor="white";
+        }
+
+        let mouseover=function(){
+            document.querySelector("p#one").innerText="p1 마우스 움직임 검출됨"
+        }
+        let mouseover2=function(){
+            document.querySelector("p.my-class").innerText="p2 마우스 움직임 검출됨"
+        }
+        let changediv=function(){
+            document.querySelector("div").innerText="!!!"
+                }
+                let changediv2=function(){
+            document.querySelector("div#d2").innerText="!!!"
+                }
+                let changediv3=function(){
+            document.querySelector("div#d3").innerText="!!!"
+                }
+                let changediv4=function(){
+            document.querySelector("div#d4").innerText="!!!"
+                }
+                let changediv5=function(){
+            document.querySelector("div#d5").innerText="!!!"
+                }
+                let changediv6=function(){
+            document.querySelector("div#d6").innerText="!!!"
+                }
+                let changediv7=function(){
+            document.querySelector("div#d7").innerText="!!!"
+                }
+                let changediv8=function(){
+            document.querySelector("div#d8").innerText="!!!"
+                }
+                let changediv9=function(){
+            document.querySelector("div#d9").innerText="!!!"
+                }
+                let changediv0=function(){
+            document.querySelector("div#d0").innerText="!!!"
+                }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step05_example2.html</title>
+    <style>
+        input{
+            margin : 30px 0 30px 30px;
+        }
+        button{
+            margin : 0 0 0 60px;
+        }
+        p{
+            border: 1px solid;
+            background-color: antiquewhite;
+            font-size : 30px;
+            width: 240px;
+        }
+    </style>
+</head>
+<body>
+    <h1>논리 연산자 테스트</h1>
+    <h3>ㅇㄴㅁㅇ</h3>
+    <input type="text" id="weight" placeholder="몸무게 입력..."><br>
+    <input type="text" id="height" placeholder="키 입력..."><br>
+    <button onclick="check()">확인하기</button>
+    <p id="result">탑승 가능 여부</p>
+    <p id="result2">result1의 반대</p>
+    <script>
+        /*
+        키와 몸무게 입력후 확인눌렀을떄 몸무게 30미만, 키 150미만일때 
+        id result 요소의 innerText에 "탑승 가능"
+        아닐 경우 "탑승 불가"
+        */
+       check=()=>{
+        let w = document.querySelector("#weight").value;
+        let h = document.querySelector("#height").value;
+       if(w < 30 && h < 150){
+        document.querySelector("#result").innerText="탑승 가능";
+       } else {
+        document.querySelector("#result").innerText="탑승 불가";
+       }
+       if(w >=30 || h >=150){ // !(w < 30 && h < 150)도 가능
+        document.querySelector("#result2").innerText="탑승 가능";
+       } else {
+        document.querySelector("#result2").innerText="탑승 불가";
+       }}
+    </script>
+</body>
+</html>

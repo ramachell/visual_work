@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step05_example.html</title>
+</head>
+
+<body>
+    <h1>if~else 문 테스트</h1>
+    <p>
+        이 번지 점프는 몸무게가 100kg 이 넘으면 탈 수 없습니다.
+    </p>
+    <input type="text" id="weight" placeholder="몸무게 입력">
+    <button onclick="check()">3항 확인</button>
+    <button onclick="check2()">for 확인</button>
+    <p id="result"></p>
+    <script>
+        /*
+        위의 input에 몸무게입력, 100이상이면 id가 result인 요소에 "탑승불가"
+        100이상 아니면 "이용가능" 출력
+        */
+
+        check = () => {
+            let isOver = document.querySelector("#weight").value >= 100;
+            document.querySelector("#result").innerText = isOver ? "탑승불가" : "탑승가능";
+            console.log("3항 체크")
+        }
+        check2 = () => {
+            if (document.querySelector("#weight").value >= 100) {
+                document.querySelector("#result").innerText = "탑승불가"
+            } else if (document.querySelector("#weight").value < 100) {
+                document.querySelector("#result").innerText = "탑승가능"
+            }
+            console.log("if문 체크")
+        }
+    </script>
+</body>
+
+</html>

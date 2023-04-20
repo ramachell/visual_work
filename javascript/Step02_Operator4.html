@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_Operator4</title>
+</head>
+<body>
+    <h1>비교 연산자</h1>
+    <script>
+        /*
+        비교 연산자
+        ==
+        !=
+        >
+        >=
+        <
+        <=
+        
+        비교 연산자로 주로 하는작업
+        1. 문자열의 내용이 같은지
+        2. 숫자 크기 비교
+        3. 숫자가 같은지 다른지 비교
+        4. 논리값(true false)가 같은지 다른지
+        5. 문자열의 알파벳 순서 or 가나다 순서 비교
+        */
+
+        let myName = "김1번";
+        let isEqual = myName == "김1번"; // true
+        let isDiff = myName != "김2번"; // true 둘이 다르므로 true
+
+        let myNum = 100;
+        let isBigger = myNum > 50; // 100 > 50 true
+        let isSmaller = myNum < 50; // 100 < 50 false
+
+        let isRun = true;
+        let r1 = true == isRun; // t = t  true
+        let r2 = false != isRun; // f != t  true
+
+        let r3 = "a" < "b"; // true
+        let r4 = "가" > "나"; // false
+
+        
+    </script>
+</body>
+</html>

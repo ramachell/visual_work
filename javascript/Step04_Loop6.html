@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>forEach 테스트</h1>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <p>p4</p>
+    <p>p5</p>
+    <button onclick="print()">프린트1</button>
+    <button onclick="print2()">프린트2</button>
+<script>
+    
+    let nums=[10, 20, 30, 40, 50];
+    let ps = document.querySelectorAll("p")
+    /*
+    ps는 p요소의 참조값들의 array
+    ex) [document.querySelector("p")[0], document.querySelector("p")[1], document.querySelector("p")[2], ..... [4]]
+    */
+    let print = () => {
+        nums.forEach(function(a,b){
+            ps[b].innerText=a;
+        });
+    }
+
+    let print2 = () => {
+        ps.forEach(function(a,b){
+            a.innerText=nums[b]
+        })
+    }
+</script>
+    
+</body>
+</html>

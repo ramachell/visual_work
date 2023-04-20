@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_example3.html</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            background-color: yellow;
+            cursor: pointer;
+            transition: margin-left 0.4 ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">div1</div>
+    <div class="box">div2</div>
+    <div class="box">div3</div>
+    <div class="box">div4</div>
+    <div class="box">div5</div>
+    <button onclick="movingRight()">오른쪽</button>
+    <!-- <button onclick="click()">되돌리기</button> <p></p> -->
+
+    <script>
+    
+        (function(){
+        let divs = document.querySelectorAll(".box");
+        divs.forEach((a,c)=>{
+            let ml = 0;
+            a.addEventListener("click", (b)=>{
+            ml += 100;
+            b.target.style.marginLeft = ml + "px";
+            });
+        });
+    })();
+    
+        // let q1 = "enr3enk3e213"
+        // let q3 = q1.replace(/[^0-9]/g,"") 
+        // 문자열에서 문자만 제거 /[^0-9]/g 문자열만 고름 , 그후 "" 공백으로 바꿔버림 (replace)
+
+        // document.querySelector(".box").addEventListener("click", (e)=>{
+        //     let ml = e.target.style.marginLeft + 100;
+        //     e.target.style.marginLeft=ml+"px";
+        // })
+
+        // let a = 0;
+        // movingRight = () => {
+        //     a += 100;
+        //     let e = document.querySelector(".box");
+        //     e.style.marginLeft = a + "px";
+        // };
+
+    </script>
+</body>
+
+</html>

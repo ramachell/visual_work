@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step01_DataType8.html</title>
+</head>
+<body>
+    <script>
+        // 페이지 로딩 시점에 실행되는 이 영역은 global영역(전역)
+        // global 영역에 정의된 자원들은 어디서나 사용 가능함
+
+        let myName = "moon";
+
+        function test() {
+            // 함수의 {} 속의 영역은 local 영역
+            // local 영역에 정의된 자원은 해당 local 영역 안에서만 사용가능
+            let yourName = "joon";
+            console.log(yourName);
+        }
+
+        function test2 () {
+            // local 영역 에서 global 영역에 정의된 자원 사용가능
+            console.log(myName); // 사용가능
+            // console.log(yourName); // 사용불가 - 정의되지 않은 변수로 undefined
+            // 그러나 함수로 끌어오면 사용가능 test();
+        }
+    </script>
+</body>
+</html>

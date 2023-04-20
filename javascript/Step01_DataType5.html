@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setp01_DataType5.html</title>
+</head>
+<body>
+    <h1>javascript 데이터 type</h1>
+    <p><strong>array</strong> type</p>
+    <script>
+        // 배열에는 주로 한가지 type의 데이터만 담는게 일반적
+        let num5=[10, 20, 30, 40 ,50];
+        let names=["김1번", "김2번", "김3번", "김4번", "김5번"];
+        let datas=[true, false, true, false, true];
+
+        // 회원 목록만 담고싶다면...
+        // 회원 한명의 정보가 여러개의 데이터로 구성되어있다 {}
+        let members = [
+            {num:1, name:"김1번", addr:"노량진"},
+            {num:2, name:"김2번", addr:"강남"},
+            {num:3, name:"김3번", addr:"강북"},
+        ]
+        let a = members; // array
+        let b = members[0]; // object
+        let c = members[0].num; // number
+        let d = members[0].name; // string
+        let e = members[0].addr; // string
+        
+        // 2중 3중 array
+        let members1 = [
+            {num:1, name:"김1번", addr:"노량진"},
+            {num:2, name:"김2번", addr:"강남"},
+            {num:3, name:"김3번", addr:"강북"},
+        ]
+        let members2 = [
+            {num:21, name:"김21번", addr:"노량진2"},
+            {num:22, name:"김22번", addr:"강남2"},
+            {num:23, name:"김23번", addr:"강북2"},
+        ]
+        let memberss = [members1, members2];
+        let memberss2 = [members2, members1];
+
+        let membersss = [memberss, memberss2];
+        
+
+
+    </script>
+    
+</body>
+</html>

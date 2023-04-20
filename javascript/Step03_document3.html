@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_document3.html</title>
+    <style>
+        p{
+            color: blue;
+        }
+        .box{
+            width: 70px;
+            height: 70px;
+            background-color: yellow;
+            cursor: pointer;
+            transition: 0.5s ease-out;
+            margin-left : 280px;
+            margin-top: 280px;
+            
+        }
+        button{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>인라인 css 테스트</h1>
+    <p style="color:red; background-color: antiquewhite;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis eligendi magnam, beatae id cupiditate quia odio facilis commodi maxime maiores nemo nulla atque, voluptates et numquam odit aliquam aperiam saepe?</p>
+    <button onclick="boxreset()">되돌리기</button>
+    <div class="box" onclick="moveBoxRight()" onmouseleave="boxreset()">눌러보세요</div>
+    
+    <script>
+        document.querySelector("p").style.backgroundColor="white";
+        
+        let a = 280;
+        moveBoxRight=()=>{
+            document.querySelector(".box").style.marginTop=a+"px";
+            document.querySelector(".box").innerText=a;
+            a += 70;
+            console.log(a);
+            if (a >= 700){
+                
+            }
+        }
+        boxreset=()=>{
+            document.querySelector(".box").style.marginLeft="280px";
+            document.querySelector(".box").style.marginTop="280px";
+            document.querySelector(".box").innerText="눌러보세요";
+            a = 280;
+        }
+    
+    </script>
+</body>
+</html>

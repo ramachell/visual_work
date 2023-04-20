@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_example.html</title>
+    <style>
+        .wrapper {
+            display: flex;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            cursor: pointer;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>원하는 박스를 클릭해 보세요</h1>
+    <div class="wrapper">
+        <div class="box">box1</div>
+        <div class="box">box2</div>
+        <div class="box">box3</div>
+        <div class="box">box4</div>
+        <div class="box">box5</div>
+        <div class="box">box6</div>
+        <div class="box">box7</div>
+        <div class="box">box8</div>
+        <div class="box">box9</div>
+        <div class="box">box10</div>
+    </div>
+
+    <script>
+        let divs = document.querySelectorAll(".box");
+
+        divs.forEach((a)=>{
+            a.addEventListener("click",(a)=>{
+                a.target.style.backgroundColor="red";
+            })
+        });
+
+
+        // for (let i = 0; i < document.querySelectorAll(".box").length; i++) {
+        //     document.querySelectorAll(".box")[i].addEventListener
+        //         ("click", (a) => {
+        //             console.log(a)
+        //             a.target.style.backgroundColor="red";
+        //             }
+        //         );
+        // }
+
+        
+
+       //  document.querySelector(".box").addEventListener("click", (a)=>{}) 
+        // document.querySelectorAll(".box")[0].addEventListener("click", (a)=>{console.log(a.target)})
+
+    </script>
+
+</body>
+
+</html>

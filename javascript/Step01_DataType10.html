@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step01_DataType10.html</title>
+</head>
+<body>
+    <script>
+        // function(msg) {} 에서 msg는 매개변수이다 함수에 전달될 값을 받을 변수이며
+        // let을 선언하지 않는다 매개변수는 해당 함수에서만 사용가능
+
+        let printMsg = function(msg){
+            console.log("------");
+            console.log(msg);
+            console.log("------");
+        }
+
+        printMsg("Hello");
+        /* ------
+           Hello 
+           ------ */
+      
+
+    function a() {
+        if (arguments.length == 2) {
+            return b(arguments[0], arguments[1]);
+        } else if (arguments.length == 3) {
+            return c(arguments[0], arguments[1], arguments[2]);
+        }
+    }
+    function b(a, b) {
+        return a + b;
+    }
+    function c(a, b, c){
+        return a + b + c;
+        }
+
+        function sum() {
+            let sum = 0;
+            for(let i = 0 ; i < arguments.length ; i++){
+                sum = sum + arguments[i];
+            };
+            return sum;
+        };
+</script>
+    
+</body>
+</html>
