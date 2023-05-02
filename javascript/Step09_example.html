@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step08_example.html</title>
+</head>
+<body>
+    <h1>setInterval, setTimeout 함수 사용해보기 </h1>
+    <p>
+        <strong id="min">0</strong>분
+        <strong id="sec">0</strong>초
+    </p>
+    <button id="stop" onclick="stop2()">정지</button>
+   
+    <script>
+        let a = 0;
+        let b = 0;
+
+       
+        let it = setInterval(()=>{
+            a ++ ;
+            if(a==60){b++;a=0;}
+            document.querySelector("#sec").innerText = a;
+            document.querySelector("#min").innerText = b;
+            
+        },1000);
+
+       stop2=()=>{
+        clearInterval(it);
+       };
+
+        // setInterval(()=>{
+        //     b++;
+        //     a = 0;
+        //     document.querySelector("#sec").innerText = a;
+        //     document.querySelector("#min").innerText = b;
+        // },60000)
+
+
+
+        // setTimeout, setInterval 함수는 javascript builtin 함수
+        setTimeout(() => {
+            console.log("setTimeout에 전달한 함수 호출");
+        }, 2000);
+
+        setInterval (() => {
+            console.log("setTimeout에 전달한 함수 호출22222222");
+        }, 5000);
+
+
+    </script>
+</body>
+</html>

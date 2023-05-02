@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step08_array4.html</title>
+</head>
+
+<body>
+    <h1>.map() , .filter() , .sort() 활용</h1>
+    <script>
+        let nums = [-30, 10, -20, 20, 30];
+
+        /*
+            1. 위 배열의 모든 아이템에 25를 더한 배열얻고
+            2. 얻어낸 배열에 양의 정수만 남기고
+            3. 오름차순으로 정렬
+        */
+
+        let nums2 = nums.map((i) => i + 25).filter((i) => i >= 0).sort((a, b) => a - b);
+
+        //     let num=[5,3,4,2,1];
+        //     num.sort((a,b)=>
+        // { let c = a-b;
+        //  console.log("a " + a+ " b " + b + " c " + c)
+
+        //  return c;});
+        //  console.log(num)
+
+        let addphones = (n, p) => {
+            let addObj = { name: n, price: p };
+            phones.push(addObj);
+        }
+
+        let phones = [];
+        addphones("iphone10", 50);
+        addphones("android 5", 20);
+        addphones("갤럭시 S5", 30);
+        addphones("iphone 13", 100);
+        addphones("갤럭시 10", 80);
+
+        
+        // 핸폰 가격 50이상인 배열만 얻어내고 가격에 대해 오름차순 정렬한 배열 얻기
+
+        let phones2 = phones.filter((i)=>i.price>=50).sort((a,b)=>a.price-b.price);
+
+
+    </script>
+</body>
+
+</html>

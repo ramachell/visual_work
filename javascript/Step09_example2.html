@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_example2.html</title>
+</head>
+
+<body>
+
+    <h1>setInterval, setTimeout 함수 사용해보기 2 (스탑워치) </h1>
+    <p>
+        <strong id="min">0</strong>분
+        <strong id="sec">0</strong>초
+        <strong id="milsec">0</strong>
+    </p>
+    <button id="str">시작</button>
+    <button id="rst">리셋</button>
+    <script>
+        let milsec = 0;
+        let sec = 0;
+        let min = 0;
+        let c = false; // false 정지상태 , true 동작중
+
+
+        document.querySelector("#str").addEventListener("click", (ev) => {
+            if (!c) {
+                c = !c;
+                ev.target.innerText = "일시정지";
+            } else {
+                c = !c;
+                ev.target.innerText = "시작";
+            }
+        });
+        document.querySelector("#rst").addEventListener("click", (e) => {
+            c = false;
+            milsec = 0;
+            sec = 0;
+            min = 0;
+            document.querySelector("#milsec").innerText = milsec;
+            document.querySelector("#sec").innerText = sec;
+            document.querySelector("#min").innerText = min;
+            document.querySelector("#str").innerText ="시작";
+            
+        })
+
+        setInterval(() => {
+            if (!c) { return; }
+            milsec++;
+            if (milsec == 100) { sec++; milsec = 0; }
+            if (sec == 60) { min++; sec = 0; }
+            document.querySelector("#milsec").innerText = milsec;
+            document.querySelector("#sec").innerText = sec;
+            document.querySelector("#min").innerText = min;
+        }, 10);
+    </script>
+
+</body>
+
+</html>
