@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_example4.html</title>
+    <style>
+        canvas{
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>canvas 요소 활용해 보기</h1>
+    <!-- canvas 요소는 width 와 height 를 속성으로 직접 지정할 수 있다. -->
+    <canvas id="myCanvas" width="800" height="500"></canvas>
+    <script>
+        /*
+            const constant 의 약자 변수에 한번 담기면 변경불가 (상수화)
+
+            but array나 오브젝트는 좀 다름
+            A=[1,2,3,4] 에서 A=[1,2,3] 으로 변경은 안되는데
+            A[0] = 5 로 내부값 변경은 가능
+
+            object도 마찬가지
+            A={a:1, b:1} A={a:1, b:1, c:6} 는 안되는데
+            b 를 3으로 바꾸는건 가능
+        */
+        
+        // canvas 요소의 참조값
+        const canvas = document.querySelector("#myCanvas");
+        // canvas 에 그림을 그릴 도구 (context) 객체 얻어내기
+        const context = canvas.getContext("2d");
+
+        // canvas 에 그릴 이미지 로딩하고
+        const snipeImg = new Image;
+        snipeImg.src="images/snipe.png";
+
+        const rabbitImg = new Image;
+        rabbitImg.src = "images/rabbit_1.png";
+        
+        const rabbitImg2 = new Image;
+        rabbitImg2.src = "images/rabbit2.png";
+        
+        const holeImg = new Image;
+        holeImg.src="images/hole.png";
+
+        const backImg = new Image;
+        backImg.src = "images/background.jpg";
+
+        const rabbits=[rabbitImg,rabbitImg2];
+        
+
+        // snipe 의 좌표
+        let snipeX = 0, snipeY = 0;
+
+        // // hole 좌표
+        // let holeX = 400, holeY = 250;
+        
+        const holes=[];
+
+        let rabbitX= 400 ,rabbitY = 250;
+        let rabbitindex = 0;
+        let count = 0;
+        const firesound = new Audio("sounds/fire.wav")
+        const diesound = new Audio("sounds/birddie.mp3")
+        
+        
+
+        setInterval(() => {
+                count++;
+                // context.clearRect(0,0,800,800);
+                context.drawImage(backImg, 0, 0, 800, 500);
+                context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
+                for (let i = 0; i < holes.length; i++) {
+                    context.drawImage(holeImg, holes[i].x - 10, holes[i].y - 10, 20, 20)
+                }
+                context.drawImage(rabbits[rabbitindex], rabbitX-50, rabbitY-50, 100, 100);
+                if (count % 20 == 0) {
+                    rabbitindex++;
+                    if (rabbitindex == 2) { rabbitindex = 0 };
+                    if (count %50 == 0 && Math.random()>0.3){
+                    // rabbitX=Math.random()*700;
+                    // rabbitY=Math.random()*400;
+                    }
+                }
+            }, 10)
+
+
+        canvas.addEventListener("mousemove", (e) => {
+            snipeX=e.offsetX;
+            snipeY=e.offsetY;
+        });
+        
+        canvas.addEventListener("mousedown", (e) => {
+            console.log(e.offsetX-rabbitX , e.offsetY-rabbitY);
+            holes.push({x: e.offsetX, y: e.offsetY});
+
+            // 시간을 0으로 초기화시켜서 누를때마다 소리가 나게함 없으면 재생시간이 끝나기전엔 새로 재생이 안됨
+
+            firesound.currentTime = 0;
+            firesound.play();
+            let isRabbithit = e.offsetX >= rabbitX - 50 && e.offsetX <= rabbitX + 50 && e.offsetY >= rabbitY - 50 && e.offsetY <= rabbitY + 50
+
+            if (isRabbithit) {
+                let score = Math.floor(Math.sqrt(((e.offsetX-rabbitX)*(e.offsetX-rabbitX) + (e.offsetY-rabbitY)*(e.offsetY-rabbitY))))
+                console.log("토끼 맞았다");
+                console.log(score);
+                diesound.currentTime = 0;
+                diesound.play();
+            }
+
+              
+        });
+        
+
+        // // 이미지 로딩이 완료 되었을때 실행할 함수 등록하기
+        // snipeImg.onload=()=>{
+        //     // .drawImage(이미지, x, y, width, height)
+        //     context.drawImage(snipeImg, 0, 0, 100, 100);
+        // }
+
+        // 마우스 지나간후의 이미지 지우고싶으면 배경이미지를 덮어놓고 그린다던지 
+
+        // canvas 요소의 mousemove event 처리
+    
+
+
+        // 
+        // canvas.addEventListener("mousemove", (e) => {
+        //     const x = e.offsetX;
+        //     const y = e.offsetY;
+        //     // 마우스 무브될때마다 clearRect로 그려진 이미지 전체삭제 그후 다시 마우스를 그림
+        //     context.clearRect(0,0,800,800);
+        //     context.drawImage(rabbit,300,0,100,100);
+        //     context.drawImage(snipeImg,x-50,y-50,100 ,100);
+        // 
+        //      이제 이걸 시간마다 반복시키기 위해 setInterval에 등록하려함
+        // })
+
+       
+
+
+    </script>
+</body>
+</html>

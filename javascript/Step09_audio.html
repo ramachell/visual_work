@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step09_audio.html</title>
+</head>
+<body>
+    <h1>오디오 재생</h1>
+    <audio src="sounds/piano.mp3" controls></audio>
+    <script>
+        // 오디오 객체 생성해서 오디오 로딩하기
+        const music = new Audio("sounds/piano.mp3");
+        // 로딩 완료됐을때 호출되는 함수등록
+        music.onloadeddata=()=>{
+            console.log("audio 로딩 완료");
+        };
+
+        const fire = new Audio("sounds/fire.wav")
+        const birddie = new Audio("sounds/birddie.mp3")
+    </script>
+</body>
+</html>
