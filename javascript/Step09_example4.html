@@ -64,20 +64,35 @@
         let rabbitX= 400 ,rabbitY = 250;
         let rabbitindex = 0;
         let count = 0;
+
+        let bubbleindex = 0;
+
+        let bubbleX = 0;
+        let bubbleY = 0;
+        let bubblespeedX=1;
+        let bubblespeedY=1;
+        //사운드 로딩
         const firesound = new Audio("sounds/fire.wav")
         const diesound = new Audio("sounds/birddie.mp3")
         
-        
-
+        const bubbleImgs = [];
+        let bubbles = [];
+        for (let i = 0 ; i < 6 ; i ++){
+            let tmp = new Image();
+            tmp.src = "images/b" +i+".png";
+            bubbleImgs.push(tmp);
+        }
         setInterval(() => {
                 count++;
                 // context.clearRect(0,0,800,800);
                 context.drawImage(backImg, 0, 0, 800, 500);
-                context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
+                // context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
                 for (let i = 0; i < holes.length; i++) {
                     context.drawImage(holeImg, holes[i].x - 10, holes[i].y - 10, 20, 20)
                 }
-                context.drawImage(rabbits[rabbitindex], rabbitX-50, rabbitY-50, 100, 100);
+                context.drawImage(rabbits[rabbitindex], rabbitX-47, rabbitY-60, 100, 100);
+                
+
                 if (count % 20 == 0) {
                     rabbitindex++;
                     if (rabbitindex == 2) { rabbitindex = 0 };
@@ -86,6 +101,16 @@
                     // rabbitY=Math.random()*400;
                     }
                 }
+                for (let i = 0 ; i < bubbles.length ; i ++ ){
+                context.drawImage(bubbleImgs[bubbles[i].index], bubbles[i].bubbleX, bubbles[i].bubbleY, 50, 50)
+                }
+                for (let i = 0 ; i < bubbles.length; i ++){
+                bubbles[i].bubbleX += bubbles[i].bubblespeedX;
+                bubbles[i].bubbleY += bubbles[i].bubblespeedY;
+                }
+                
+
+                context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
             }, 10)
 
 
@@ -110,6 +135,17 @@
                 console.log(score);
                 diesound.currentTime = 0;
                 diesound.play();
+                for (let i = 0 ; i < 6 ; i ++){
+                    let tmp = {};
+                    tmp.bubbleX = e.offsetX;
+                    tmp.bubbleY = e.offsetY;
+                    tmp.index = i;
+                    tmp.bubblespeedX = Math.random()*20-10;
+                    tmp.bubblespeedY = Math.random()*20-10;
+                    bubbles.push(tmp);
+                    console.log(tmp.bubbleY)
+                }              
+
             }
 
               
