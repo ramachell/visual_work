@@ -15,6 +15,9 @@
 <body>
     <h1>canvas 요소 활용해 보기</h1>
     <!-- canvas 요소는 width 와 height 를 속성으로 직접 지정할 수 있다. -->
+    <p id="point">점수 : 0</p>
+    <p id="highpoint">최고 점수 : 0</p>
+    <p id="perfect">정확도 : 0</p>
     <canvas id="myCanvas" width="800" height="500"></canvas>
     <script>
         /*
@@ -56,7 +59,7 @@
         // snipe 의 좌표
         let snipeX = 0, snipeY = 0;
 
-        // // hole 좌표
+        // hole 좌표
         // let holeX = 400, holeY = 250;
         
         const holes=[];
@@ -71,47 +74,129 @@
         let bubbleY = 0;
         let bubblespeedX=1;
         let bubblespeedY=1;
+        let point = 0;
+        let highpoint = 0;
+        let score = 0;
         //사운드 로딩
         const firesound = new Audio("sounds/fire.wav")
         const diesound = new Audio("sounds/birddie.mp3")
         
+        // 버블이미지로딩해서 배열에 넣기
         const bubbleImgs = [];
         let bubbles = [];
-        for (let i = 0 ; i < 6 ; i ++){
+        for (let i = 0 ; i < 5 ; i ++){
             let tmp = new Image();
-            tmp.src = "images/b" +i+".png";
+            tmp.src = "images/r" +i+".png";
             bubbleImgs.push(tmp);
         }
-        setInterval(() => {
-                count++;
-                // context.clearRect(0,0,800,800);
-                context.drawImage(backImg, 0, 0, 800, 500);
-                // context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
-                for (let i = 0; i < holes.length; i++) {
-                    context.drawImage(holeImg, holes[i].x - 10, holes[i].y - 10, 20, 20)
-                }
-                context.drawImage(rabbits[rabbitindex], rabbitX-47, rabbitY-60, 100, 100);
-                
 
-                if (count % 20 == 0) {
-                    rabbitindex++;
-                    if (rabbitindex == 2) { rabbitindex = 0 };
-                    if (count %50 == 0 && Math.random()>0.3){
+        //글자의 크기, 글꼴
+        context.font = "20px consolas";
+        //글자의 색상
+        context.fillStyle = "yellow";
+
+        //시계 다이얼 이미지
+        const dialImg = new Image();
+        dialImg.src = "images/dial.png";
+        // 시침 분침 초침
+        const hourImg = new Image();
+        hourImg.src = "images/clock_hour.png";
+        const minImg = new Image();
+        minImg.src = "images/clock_min.png";
+        const secImg = new Image();
+        secImg.src = "images/clock_sec.png";
+        //시계를 그릴 좌표
+        const clockX = 700;
+        const clockY = 100;
+            
+        setInterval(() => {
+            
+            count++;
+            // context.clearRect(0,0,800,800);
+            context.drawImage(backImg, 0, 0, 800, 500);
+
+            // 현재 context의 정상상태를 저장한다
+            context.save();
+            //시계를 그릴 좌표로 평행이동한다
+            context.translate(clockX,clockY);
+            // 시계를 원점에 그리기
+        
+            context.drawImage(dialImg, 0-100, 0-100, 200, 200);
+
+            const d = new Date();
+            const hour = d.getHours();
+            const min = d.getMinutes();
+            const sec = d.getSeconds();
+            
+            const rsec = Math.PI/180*sec*6; // 초당 6도
+            const rmin = Math.PI/180*min*6 // 분당6도, 
+            const rhour = Math.PI/180*hour*30; // 시간당 30도
+
+            // 초침 1초마다 6도씩 돌게 (Math.PI/180 = 1도)
+            context.rotate(rsec);
+            // 초침 그리기 (시계 중심 좌표를 기준으로 그려본다)
+            context.drawImage(secImg, -4,0-90,8,90);
+            context.drawImage(rabbits[rabbitindex], -50,-50, 100, 100);
+            context.rotate(-rsec+rmin+rsec/60);
+            context.drawImage(minImg, -4,0-90,8,90);
+            context.rotate(-(rmin+rsec/60)+rhour+rmin/60*5);
+            context.drawImage(hourImg, -4,0-90,8,90);
+            
+            // 다른 그림에 영향 안가도록 저장했던 정상상태로 context를 되돌림
+            context.restore();
+            
+            // context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
+            for (let i = 0; i < holes.length; i++) {
+                context.drawImage(holeImg, holes[i].x - 10, holes[i].y - 10, 20, 20)
+            }
+            context.drawImage(rabbits[rabbitindex], rabbitX - 47, rabbitY - 60, 100, 100);
+
+            // 카운트 20마다 토끼이미지 바뀜
+            if (count % 20 == 0) {
+                rabbitindex++;
+                // 이미지 2개 0,1 밖에 없으니 2되면 초기화
+                if (rabbitindex == 2) { rabbitindex = 0 };
+                // count 50 마다 70%확률로 토끼 위치 랜덤변경
+                if (count % 50 == 0 && Math.random() > 0.3) {
                     // rabbitX=Math.random()*700;
                     // rabbitY=Math.random()*400;
-                    }
                 }
-                for (let i = 0 ; i < bubbles.length ; i ++ ){
-                context.drawImage(bubbleImgs[bubbles[i].index], bubbles[i].bubbleX, bubbles[i].bubbleY, 50, 50)
-                }
-                for (let i = 0 ; i < bubbles.length; i ++){
+            }
+            // 풍선의 배열들 그림 + 랜덤속도까지
+            for (let i = 0; i < bubbles.length; i++) {
+                context.drawImage(bubbleImgs[bubbles[i].index], bubbles[i].bubbleX - 47, bubbles[i].bubbleY - 60, 100, 100)
+            }
+            for (let i = 0; i < bubbles.length; i++) {
                 bubbles[i].bubbleX += bubbles[i].bubblespeedX;
                 bubbles[i].bubbleY += bubbles[i].bubblespeedY;
-                }
-                
+            }
 
-                context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
-            }, 10)
+            // 마우스 위치에 스나이프 그림
+            context.save();            
+            context.translate(snipeX,snipeY);
+            
+            context.rotate(Math.PI/180*count*3);
+            context.drawImage(snipeImg, -50, -50, 100, 100);
+            
+            context.restore();
+            // context.drawImage(snipeImg, snipeX - 50, snipeY - 50, 100, 100)
+            
+            //글자 출력하기 .fillText(글내용,좌하단x, 좌하단의 y)
+            // StrokeText() 는 내부가 빈 외곽선만 있는글씨체
+            context.fillText("Point : " + point , 10 , 30)
+            // context.strokeText("Point : " + point, 10, 30)
+            context.strokeText("정확도 : " + score, 30, 60)
+
+            // 화면 벗어나면 그 배열을 삭제함
+            for (let i = 0; i < bubbles.length; i++) {
+                if (bubbles[i].bubbleX < -25 || bubbles[i].bubbleY < -25 || bubbles[i].bubbleX > 825 || bubbles[i].bubbleY > 525) {
+                bubbles.splice(i, 1);
+            }
+            }
+
+         
+
+        }, 10)
 
 
         canvas.addEventListener("mousemove", (e) => {
@@ -130,12 +215,15 @@
             let isRabbithit = e.offsetX >= rabbitX - 50 && e.offsetX <= rabbitX + 50 && e.offsetY >= rabbitY - 50 && e.offsetY <= rabbitY + 50
 
             if (isRabbithit) {
-                let score = Math.floor(Math.sqrt(((e.offsetX-rabbitX)*(e.offsetX-rabbitX) + (e.offsetY-rabbitY)*(e.offsetY-rabbitY))))
+                let score1 = 100-Math.floor(Math.sqrt(((e.offsetX-rabbitX)*(e.offsetX-rabbitX) + (e.offsetY-rabbitY)*(e.offsetY-rabbitY))))
                 console.log("토끼 맞았다");
-                console.log(score);
+                point ++;
+                document.querySelector("#point").innerText = "현재 점수 : " + point;
+                
+                score = score1;
                 diesound.currentTime = 0;
                 diesound.play();
-                for (let i = 0 ; i < 6 ; i ++){
+                for (let i = 0 ; i < 5 ; i ++){
                     let tmp = {};
                     tmp.bubbleX = e.offsetX;
                     tmp.bubbleY = e.offsetY;
@@ -143,7 +231,7 @@
                     tmp.bubblespeedX = Math.random()*20-10;
                     tmp.bubblespeedY = Math.random()*20-10;
                     bubbles.push(tmp);
-                    console.log(tmp.bubbleY)
+                                        
                 }              
 
             }
