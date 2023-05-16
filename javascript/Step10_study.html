@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_study.html</title>
+</head>
+
+<body>
+    <p id="one"></p>
+    <p id="two"></p>
+    <p id="three">
+        <hr>
+    </p>
+    <p id="four"> d</p>
+    
+    <script>
+        document.querySelector("#one").innerText = `<img src="images/kim1.png">`;
+        document.querySelector("#two").innerHTML = `<img src="images/kim1.png">`;
+        document.querySelector("#three").innerHTML = `<img src="images/kim1.png">`;
+        // beforeend 를 afterbegin 으로 바꿔서 테스트도 해보기
+        // document.querySelector("#four").insertAdjacentHTML("beforeend", `<img src="images/kim1.png">`);
+        document.querySelector("#four").insertAdjacentHTML("afterbegin", `<img src="images/kim1.png">`);
+        // document.querySelector("#four").insertAdjacentHTML("beforeend",`<img src="images/kim1.png">`);
+    </script>
+
+
+</body>
+
+</html>

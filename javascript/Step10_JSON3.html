@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_JSON3.html</title>
+</head>
+<body>
+    <button id="printBtn">출력하기</button>
+    <ul id="friends">
+
+    </ul>
+    <script>
+        const data=`["김구라", "해골", "원숭이", "주뎅이", "덩어리"]`;
+        
+        //   출력하기 버튼을 눌렀을때 ul 요소에 친구 목록을 출력해 보세요.
+        //   배열 모양의 json 도 JSON.parse() 이용시 실제 배열로 만들수있음
+        //   <li> 김구라 </li> 이런식으로 li 요소를 만들어서 문자열 출력후 ul요소에 추가    
+
+        document.querySelector("#printBtn").addEventListener("click", (e) => {
+                const data2 = JSON.parse(data);
+
+                for (let i = 0; i<3 ; i++ ) {
+                let li1 = document.createElement("li");
+                li1.innerText = data2[i]
+                document.querySelector("#friends").append(li1);
+            }
+            });
+
+        
+    </script>
+</body>
+</html>
