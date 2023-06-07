@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step11_RegExp2.html</title>
+</head>
+<body>
+    <h1>입력한 문자열 검증하기</h1>
+    <p>반드시 입력해야되고 특수문자 허용 x</p>
+    <input type="text" id="one" placeholder="입력...">
+    <p id="result"></p>
+
+    <script>
+        document.querySelector("#one").addEventListener("input",e=>{
+            //1 입력한 문자열 읽어와서
+            const str = e.target.value;
+            //2 반드시 1글자이상 입력해야되고 특수문자 x 면
+            const reg1 = new RegExp("^[\\w]{1,}$")
+            const isPass = reg1.test(str);
+            if (isPass){
+                document.querySelector("#result").innerText ="Pass";
+            } else{
+                document.querySelector("#result").innerText ="Fail";
+            }
+            // p result 에 Pass 출력 아니면 Fail 출력
+        })
+    </script>
+</body>
+</html>
