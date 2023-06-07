@@ -14,13 +14,14 @@
     <p id="three">
         <hr>
     </p>
-    <p id="four"> d</p>
+    <p id="four"> d <hr></p>
     
     <script>
         document.querySelector("#one").innerText = `<img src="images/kim1.png">`;
         document.querySelector("#two").innerHTML = `<img src="images/kim1.png">`;
         document.querySelector("#three").innerHTML = `<img src="images/kim1.png">`;
         // beforeend 를 afterbegin 으로 바꿔서 테스트도 해보기
+<<<<<<< HEAD
         // document.querySelector("#four").insertAdjacentHTML("beforeend", `<img src="images/kim1.png">`);
         document.querySelector("#four").insertAdjacentHTML("afterbegin", `<img src="images/kim1.png">`);
         // document.querySelector("#four").insertAdjacentHTML("beforeend",`<img src="images/kim1.png">`);
@@ -29,6 +30,14 @@
         function delete2(){
 
         }
+=======
+        
+        // document.querySelector("#four").insertAdjacentHTML("beforebegin", `<img src="images/kim1.png">`);
+        // document.querySelector("#four").insertAdjacentHTML("afterbegin", `<img src="images/kim1.png">`);
+        document.querySelector("#four").insertAdjacentHTML("beforeend", `<img src="images/kim1.png">`);
+        // document.querySelector("#four").insertAdjacentHTML("afterend",`<img src="images/kim1.png">`);
+        
+>>>>>>> 6c9a0a55fa5480c0400c62ee1fb6f6168993b5b2
     </script>
 
 

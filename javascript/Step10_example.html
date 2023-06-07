@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_example.html</title>
+</head>
+<body>
+    <button id="addBtn">추가</button>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>이름</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+    <script>
+        //원격지 서버로 부터 받아온 UI 에 출력할 정보를 가지고 있는 JSON 문서(문자열) 이라고 가정하자 
+        const data=`{"num":1, "name":"김구라", "addr":"노량진"}`;
+
+        document.querySelector("#addBtn").addEventListener("click", ()=>{
+            //json 문서를 활용해서 object 를 만든다.
+            const obj=JSON.parse(data);
+            const tr=`
+                <tr>
+                    <td>${obj.num}</td>
+                    <td>${obj.name}</td>
+                    <td>${obj.addr}</td>
+                </tr>
+            `; 
+            document.querySelector("tbody").insertAdjacentHTML("beforeend", tr);
+        });
+    </script>
+</body>
+</html>

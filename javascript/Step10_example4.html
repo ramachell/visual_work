@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step10_example4.html</title>
+</head>
+<body>
+    <input type="text" placeholder="번호입력..." id="inputNum">
+    <br>
+    <input type="text" id="inputName" placeholder="이름입력...">
+    <br>
+    <input type="text" id="inputAddr" placeholder="주소입력...">
+    <br>
+    <button id="saveBtn">저장</button>
+    <button id="deleteBtn">삭제</button>
+    <script>
+
+        // 번호 이름 주소 입력후 저장시 localStorage 저장
+        // 삭제 누르면 삭제
+
+        // 페이지 로딩때 localStorage 에 번호이름주소 있다면 input 에 출력
+
+        // if에서 () 안에 0 null undefined "" 가 아니면 true로 처리됨 즉 값이존재하면
+        if(localStorage.savedMsg){
+            const json = localStorage.getItem("savedMsg");
+            const obj = JSON.parse(json);
+
+            document.querySelector("#inputNum").value = obj.num;
+            document.querySelector("#inputName").value = obj.name;
+            document.querySelector("#inputAddr").value = obj.addr;
+        }
+
+        
+        document.querySelector("#saveBtn").addEventListener("click", e=>{
+            let num = document.querySelector("#inputNum").value;
+            let name = document.querySelector("#inputName").value;
+            let addr = document.querySelector("#inputAddr").value;
+
+            const obj = {num,name,addr};
+
+            const json = JSON.stringify(obj);
+            
+            localStorage.savedMsg = json;
+            
+        });
+
+        document.querySelector("#deleteBtn").addEventListener("click",e=>{
+            localStorage.removeItem("savedMsg")
+        });
+
+
+    </script>
+
+</body>
+</html>
