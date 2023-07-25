@@ -12,14 +12,16 @@
         <h1>다양한 form 디자인</h1>
         <form action="signup">
             <div class="form-floating mb-2">
-                <input class="form-control" type="text" id="id" placeholder="아이디 입력">
+                <input class="form-control" type="text" id="id" name="id" placeholder="아이디 입력">
                 <label for="id">아이디</label>
             </div>
             <div class="form-floating mb-2">
-                <input class="form-control" type="password" id="pwd" placeholder="비밀번호 입력">
+                <input class="form-control" type="password" id="pwd" name="pwd" placeholder="비밀번호 입력">
                 <label for="pwd">비밀번호</label>
             </div>
-            <select class="form-select mb-2" id="job">
+            <select class="form-select mb-2" id="job" name="job">
+                <!-- value="" 없으면 request겟파라미터 job 했을때 "직업 선택"이 전송됨
+                value="" 있으면 null나옴  -->
                 <option value="">직업 선택</option>
                 <option value="programmer">프로그래머</option>
                 <option value="doctor">의사</option>
@@ -35,9 +37,48 @@
                     <label class="form-check-label" for="two">여자</label>
                 </div>
             </fieldset>
+            <fieldset>
+                <legend>취미 체크</legend>
+                <div class="form-check">
+                    <input class="form-check-input" name="hobby" value="piano" type="checkbox" id="piano"> 
+                    <label class="form-check-label" for="piano">피아노</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="hobby" value="game" type="checkbox" id="game"> 
+                    <label class="form-check-label" for="game">게임</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" name="hobby" value="etc" type="checkbox" id="etc"> 
+                    <label class="form-check-label" for="etc">기타</label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>개인정보 활용 동의</legend>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="allowAll"> 
+                    <label class="form-check-label" for="allowAll">전체 동의</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" name="allowEmail" value="yes" type="checkbox" id="allowEmail"> 
+                    <label class="form-check-label" for="allowEmail">이메일 수신</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" name="allowMessage" value="yes" type="checkbox" id="allowMessage"> 
+                    <label class="form-check-label" for="allowMessage">문자 수신</label>
+                </div>
+            </fieldset>
 
             <button class="btn btn-outline-primary" type="submit">가입</button>
         </form>
     </div>
+
+    <script>
+        document.querySelector("#allowAll").addEventListener("click" ,e=>{
+            document.querySelector("#allowEmail").checked=e.target.checked;
+            document.querySelector("#allowMessage").checked=e.target.checked;
+        })
+
+    </script>
 </body>
 </html>

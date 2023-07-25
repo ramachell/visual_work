@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_Animation.html</title>
+    <style>
+        .round{
+            border: 1px solid red;
+            border-radius: 50%;
+        }
+
+        #kim{
+            animation: rotateAni 3s linear;
+        }
+
+        #kim2:hover{
+            /* animation: rotateAni 3s linear; */
+            /* 위는 아래의 3줄을 줄인 표현식이다. */
+            animation-name: rotateAni;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+
+        }
+
+        /* animation keyframe 정의하기 */
+        @keyframes rotateAni {
+            from{
+                transform: rotate(0deg);
+                background-color: #ffffff;
+            }   
+            to{
+                transform: rotate(360deg);
+                background-color: blue;
+            }
+        }
+        .rotate{
+            animation: rotateAni 3s linear;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>animation 테스트</h3>
+        <img class="round" id="kim" src="../html/images/kim1.png" alt="">
+        <img class="round" id="kim2" src="../html/images/kim1.png" alt="">
+        <img class="round" id="kim3" src="../html/images/kim1.png" alt="">
+        <img class="round" id="kim4" src="../html/images/kim1.png" alt="">
+        <button id="move">dd</button>
+    </div>
+
+    <script>
+        document.querySelector("#kim3").addEventListener("click", (e)=>{
+            e.target.style.animation="rotateAni 3s linear";
+        })
+
+        document.querySelector("#kim4").addEventListener("click", (e)=>{
+            e.target.classList.add("rotate");
+        })
+
+        document.querySelector("#kim4").addEventListener("animationend", (e)=>{
+            e.target.classList.remove("rotate");
+        })
+    </script>
+</body>
+</html>

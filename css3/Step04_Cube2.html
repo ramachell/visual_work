@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step04_Cube2.html</title>
+    <style>
+        .wrapper {
+            perspective: 500px;
+            perspective-origin: 50% 50%;
+        }
+
+        .cube {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            transform-origin: 50% 50%;
+            transform: translateZ(-200px);
+        }
+
+        .cube>div {
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            font-weight: bold;
+            opacity: 0.5;
+        }
+
+        /* 
+        .cube>div:nth-child(1) {
+            transform: translateZ(200px);
+        }
+
+        .cube>div:nth-child(2) {
+            transform: rotateY(90deg) translateZ(200px);
+        }
+
+        .cube>div:nth-child(3) {
+            transform: rotateY(180deg) translateZ(200px);
+        }
+
+        .cube>div:nth-child(4) {
+            transform: rotateY(270deg) translateZ(200px);
+        }
+
+        .cube>div:nth-child(5) {
+            transform: rotateX(90deg) translateZ(200px);
+        }
+
+        .cube>div:nth-child(6) {
+            transform: rotateX(-90deg) translateZ(200px);
+        }
+        */
+
+        .cube:hover {
+            transition: transform 1s ease-in-out;
+            transform: translateZ(-200px) rotateX(45deg) rotateY(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>3d cube 테스트</h3>
+        <div class="wrapper">
+            <div class="cube">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+            </div>
+
+        </div>
+        <div>
+            <button id="leftBtn">left</button>
+            <button id="rightBtn">right</button>
+        </div>
+    </div>
+    <script>
+        // div를 js로 배치해보기
+
+        /*
+        .cube>div:nth-child(1) {
+            transform: translateZ(200px);
+        }
+        */
+
+        for (let i = 0; i < 4; i++) {
+            let div = document.createElement("div")
+            div.innerText = i+1 ;
+            document.querySelector(".cube").append(div);
+        }
+        const divs = document.querySelectorAll(".cube div");
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.transform = "rotateY(" + 90 * i + "deg) translateZ(200px)";
+        }
+        let rY = 0;
+
+        document.querySelector("#leftBtn").addEventListener("click", () => {
+            rY = -90;
+            document.querySelector(".cube").style.transform = "translateZ(-200px) rotateY(" + rY + "deg)"
+        })
+
+    </script>
+</body>
+
+</html>

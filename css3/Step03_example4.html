@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_example4.html</title>
+    <style>
+        .wrapper{
+            
+            height: 400px;
+            perspective: 500px;
+            perspective-origin: 50% 50%;
+            border: 1px solid red;
+            padding-top: 100px;
+        }
+        .targer{
+            margin:0 auto;
+            width: 200px;
+            
+        }
+        .wrapper img{
+            height: 100px;
+            width: 100px;
+            justify-content: center;
+            max-width: 100%;
+            
+        }
+        #one:hover{
+            transition: 1s;
+            transform: rotateX(45deg);
+        }
+        #two:hover{
+            transition: 1s;
+            transform: rotateY(45deg);
+        }
+        #three:hover{
+            transition: 1s;
+            transform: rotateZ(45deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>3d transform 테스트</h3>
+        <!-- 3d 공간을 만들 wrapper div -->
+        <div class="wrapper">
+            <!-- 3d transform 을 할 아이템-->
+            <div class="target" id="one">
+                <img src="images/image1.png"/>
+            </div>
+        </div>
+        <div class="wrapper">
+            <!-- 3d transform 을 할 아이템-->
+            <div class="target" id="two">
+                <img src="images/image1.png"/>
+            </div>
+        </div>
+        <div class="wrapper">
+            <!-- 3d transform 을 할 아이템-->
+            <div class="target" id="three">
+                <img src="images/image1.png"/>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

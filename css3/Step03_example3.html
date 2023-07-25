@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step03_example3.html</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        .box{
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+            border: 1px solid red;
+            background-color: yellow;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .box{
+            animation: zoomIn 0.5s ease-out;
+        }
+        .box img{
+            width:100px;
+            height: 100px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="wrapper">
+        </div>
+    </div>
+    <script>
+        let images = [ "images/image1.png","images/image2.png","images/image3.png","images/image4.png","images/image5.png" ]
+        let i = 0;
+        function makeBox(){
+            
+            const img = document.createElement("img");
+            const box = document.createElement("div");
+            img.setAttribute("src",images[i]);
+            document.querySelector(".wrapper").append(box);
+            box.append(img);
+            box.classList.add("box");
+
+            box.addEventListener("click", (e)=>{
+                i++
+                if(i == images.length){
+                    i=0;
+                }
+                e.target.remove();
+                makeBox();
+            });
+        }
+        makeBox();
+
+    </script>
+</body>
+</html>

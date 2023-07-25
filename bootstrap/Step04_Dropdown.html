@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step04_Dropdown.html</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>dropdown 버튼 테스트</h1>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown" id="myDrop">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                Dropdown button2
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#" class="dropdwon-item"><p style="background-color: aqua;">김밥</p></a></li>
+                <li><a href="#" class="dropdwon-item"><p style="background-color: aqua;">라면</p></a></li>
+                <li><a href="#" class="dropdwon-item">떡볶이</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // 아디가 myDrop 인 요소의 자손중에 a 가져오기
+        const as = document.querySelectorAll("#myDrop a")
+
+        // for (let i = 0; i < as.length; i++) {
+        //     as[i].addEventListener("click", e =>{
+        //         let menu = e.target.innerText;
+        //         document.querySelector("#myDrop button").innerText = menu;
+        //     })
+        // }
+        as.forEach(i=>{
+            i.addEventListener("click",e=>{
+                document.querySelector("#myDrop button").innerText = e.target.innerText;
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step02_example.html</title>
+    <style>
+        .container{
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .wrapper {
+            
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            overflow: hidden;
+
+        }
+
+        #one {
+            width: 300px;
+            height: 300px;
+            transition: transform 0.4s ease-out;
+            transform: translateX(-200px);
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>transform 예제</h3>
+        <button id="showBtn">show</button>
+        <button id="hideBtn">hide</button>
+        <div class="wrapper">
+            <div id="one"></div>
+        </div>
+    </div>
+</body>
+<script>
+    document.querySelector("#showBtn").addEventListener("click",e=>{
+        document.querySelector("#one").style.transform="translateX(0)";
+    })
+
+    document.querySelector("#hideBtn").addEventListener("click",e=>{
+        document.querySelector("#one").style.transform="translateX(-300px)";
+    })
+</script>
+</html>

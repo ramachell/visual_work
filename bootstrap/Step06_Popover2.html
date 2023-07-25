@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step06_Popover2.html</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.bundle.js"></script>
+</head>
+<body>
+    <div class="container" style="padding: 200px;">
+        <h1>Popover 테스트2</h1>
+        <button id="one" type="button" class="btn btn-lg btn-danger" 
+            data-bs-toggle="popover" 
+            data-bs-title="Popover title" 
+            data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+        <button id="two" type="button" class="btn btn-lg btn-danger" 
+            data-bs-toggle="popover" 
+            data-bs-title="Popover title" 
+            data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+        <button id="three" type="button" class="btn btn-lg btn-danger" 
+            data-bs-toggle="popover" 
+            data-bs-title="Popover title" 
+            data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+        </div>
+    <script>
+       // one 버튼 popover 초기화
+        const one = document.querySelector("#one");
+        new bootstrap.Popover(one, {placement:"top"});
+
+        const two = document.querySelector("#two");
+        new bootstrap.Popover(two, {placement:"left"});
+
+        new bootstrap.Popover(document.querySelector("#three"), {
+            placement:"top",
+            trigger:"focus hover"});
+    </script>
+</body>
+</html>
